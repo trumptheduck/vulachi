@@ -19,6 +19,7 @@ import { UtilsComponent } from './utils/utils.component';
 import { PrinterComponent } from './utils/printer/printer.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { LookupComponent } from './lookup/lookup.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { LookupComponent } from './lookup/lookup.component';
     MatIconModule,
     FormsModule,
     MatSnackBarModule,
-    CKEditorModule
+    CKEditorModule,
+    NgxSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

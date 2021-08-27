@@ -1,1 +1,38 @@
-<p>lookup works!</p>
+<section class="main">
+  <section class="lookup">
+    <div class="lookup__filter">
+      <label>Khu vực</label>
+      <select type="text" class="form-control lookup__filter__region">
+        <option value="ALL">TẤT CẢ</option>
+        <option value="NORTH">MIỀN BẮC</option>
+        <option value="MIDDLE">MIỀN TRUNG</option>
+        <option value="SOUTH">MIỀN NAM</option>
+      </select>
+      <label>Điểm chuẩn</label>
+      <div class="custom-slider lookup__filter__marks">
+        <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+      </div>
+      <input type="text" class="lookup__filter__search form-control" placeholder="Tìm kiếm...">
+    </div>
+    <div class="lookup__result">
+      <div class="lookup__result__item">
+        <img src="https://www.hust.edu.vn/documents/21257/147855/2.+BVP-Logo+BK-RGB/c2f94a78-f713-4af1-b9f0-7f6c4cb94438?version=1.0&t=1483699000000"
+         class="lookup__result__item__image" height="100">
+         <div class="lookup__result__item__inner">
+          <p class="lookup__result__item__title">Trường Đại học Bách khoa Hà Nội</p>
+          <p class="lookup__result__item__subtitle">Mã trường: HUST | Số khóa học: 4</p>
+         </div>
+         <div class="lookup__result__item__expand">Chi tiết</div>
+      </div>
+      <div class="lookup__result__item">
+        <img src="https://www.hust.edu.vn/documents/21257/147855/2.+BVP-Logo+BK-RGB/c2f94a78-f713-4af1-b9f0-7f6c4cb94438?version=1.0&t=1483699000000"
+         class="lookup__result__item__image" height="100">
+         <div class="lookup__result__item__inner">
+          <p class="lookup__result__item__title">Trường Đại học Bách khoa Hà Nội</p>
+          <p class="lookup__result__item__subtitle">Mã trường: HUST | Số khóa học: 4</p>
+         </div>
+         <div class="lookup__result__item__expand">Chi tiết</div>
+      </div>
+    </div>
+  </section>
+</section>

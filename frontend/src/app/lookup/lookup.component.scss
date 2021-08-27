@@ -1,0 +1,123 @@
+.main {
+  padding-top: 80px;
+  position: relative;
+  top: 70px;
+  min-height: 80%;
+  width: 100%;
+}
+.lookup {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__filter {
+    position: relative;
+    width: 900px;
+    margin-bottom: 15px;
+    
+    label {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      font-weight: lighter;
+      color: gray;
+    }
+    .form-control {
+      border: 1px solid rgb(189, 188, 188);
+      border-radius: 0px;
+    }
+    &__region, &__marks {
+      width: 250px;
+    }
+    &__search {
+      position: absolute;
+      right: 0px;
+      top: 30px;
+      width: 350px;
+    }
+  }
+  &__result {
+    position: relative;
+    width: 900px;
+    color: #373a6d;
+
+    &__item {
+      position: relative;
+      border: 1px solid #373a6d;
+      min-height: 150px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 10px;
+
+      &__image {
+        margin-right: 70px;
+        margin-left: 40px;
+      }
+      &__title {
+        font-size: 30px;
+      }
+      &__expand {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        width: 100px;
+        height: 40px;
+        background-color: #373a6d;
+        color: white;
+        font-size: 16px;
+        line-height: 40px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+
+::ng-deep {
+  .custom-slider .ngx-slider .ngx-slider-bar {
+    background: #ffe4d1;
+    height: 2px;
+  }
+  .custom-slider .ngx-slider .ngx-slider-selection {
+    background: #373a6d;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-pointer {
+    width: 8px;
+    height: 16px;
+    top: auto; /* to remove the default positioning */
+    bottom: 0;
+    background-color: #373a6d;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-pointer:after {
+    display: none;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-bubble {
+    bottom: 14px;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-limit {
+    font-weight: bold;
+    color: #373a6d;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-tick {
+    width: 1px;
+    height: 10px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: #ffe4d1;
+    top: -1px;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-tick.ngx-slider-selected {
+    background: #373a6d;
+  }
+}

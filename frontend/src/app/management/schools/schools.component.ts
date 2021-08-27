@@ -51,7 +51,7 @@ export class SchoolsComponent implements OnInit {
     return vnRegion;
   }
   searchData(query:string,data:any):any {
-      var results = [];
+      var results:any[] = [];
       
       for (let i = 0; i< data.length; i++) {
         if (data[i].name.search(new RegExp(query,"i")) !== -1) {
