@@ -12,7 +12,14 @@ const userSchema = new mongoose.Schema(
     refreshToken: { type: String },
     isVerified: {type: Boolean, required: true, default: false},
     verificationToken: {type: String},
-    verificationOTP: {type: String},
+    profile: {
+      fullname: {type: String},
+      gender: {type: Boolean},
+      dateOfBirth: {type: Date},
+      placeOfBirth: {type: String},
+      race: {type: String},
+      isForeign: {type: Boolean},
+    }
   },
   {
     collection: "users",

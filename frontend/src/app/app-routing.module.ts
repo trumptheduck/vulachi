@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
+import { PrinterComponent } from './utils/printer/printer.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: "login",
     component: AuthComponent,
+  },
+  {
+    path: "test",
+    component: PrinterComponent,
   },
   {
     path: "admin",

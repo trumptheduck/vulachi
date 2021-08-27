@@ -15,6 +15,8 @@ import { AuthComponent } from './auth/auth.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { UtilsComponent } from './utils/utils.component';
+import { PrinterComponent } from './utils/printer/printer.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     HeaderComponent,
     FooterComponent,
     AuthComponent,
-    DashboardComponent
+    DashboardComponent,
+    UtilsComponent,
+    PrinterComponent
   ],
   imports: [
     BrowserModule,
