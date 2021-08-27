@@ -1,0 +1,74 @@
+<section class="main">
+    <div class="main__filter">
+        <input [(ngModel)]="searchQuery" (ngModelChange)="onSearch(searchQuery)" type="text" class="main__filter__search form-control" placeholder="Search...">
+    </div>
+    <div class="main__wrapper">
+        <div class="main__wrapper__inner">
+            <table class="table">
+            <tr>
+                <th>TEN TRUONG</th>
+                <th>MA TRUONG</th>
+                <th>KHU VUC</th>
+                <th>SO KHOA HOC</th>
+                <th><span class="material-icons" (click)="schoolDrawer.newSchool()">note_add</span>Thêm</th>
+            </tr>
+            <tr *ngFor="let school of schoolData">
+                <td>{{school.name}}</td>
+                <td>{{school.code}}</td>
+                <td>{{getRegion(school.region)}}</td>
+                <td><a routerLink="/admin/courses" [queryParams]="{id:school._id}"><span class="material-icons">edit</span></a>Sửa | Tổng số khóa học: {{school.courses.length}}</td>
+                <td><span class="material-icons" (click)="schoolDrawer.editSchool(school)">edit</span>Sửa</td>
+            </tr>
+    </table>
+        </div>
+    </div>
+</section>
+<section class="drawer">
+        <div class="drawer__wrapper" [ngClass]="{'drawer__wrapper--visible':schoolDrawer.isVisible}">
+            <span class="material-icons drawer__close" (click)="schoolDrawer.close()">close</span>
+            <p class="drawer__title">Thong tin truong</p>
+            <div class="drawer__form">
+                <label>TEN TRUONG:</label>
+                <input type="text" [(ngModel)]="schoolDrawer.data.name" class="drawer__form__input form-control" placeholder="TEN TRUONG">
+                <label>MA TRUONG:</label>
+                <input type="text" [(ngModel)]="schoolDrawer.data.code" class="drawer__form__input form-control" placeholder="MA TRUONG">
+                <label>KHU VUC:</label>
+                <select [(ngModel)]="schoolDrawer.data.region" class="drawer__form__input form-control">
+                    <option [selected]="schoolDrawer.data.region === 'NORTH'" value="NORTH">Mien Bac</option>
+                    <option [selected]="schoolDrawer.data.region === 'MIDDLE'" value="MIDDLE">Mien Trung</option>
+                    <option [selected]="schoolDrawer.data.region === 'SOUTH'" value="SOUTH">Mien Nam</option>
+                </select>
+                <label>DIA CHI:</label>
+                <input type="text" [(ngModel)]="schoolDrawer.data.address" class="drawer__form__input form-control" placeholder="DIA CHI">
+                <div *ngFor="let item of schoolDrawer.data.phones, index as i" class="drawer__form__formGroup"></div>
+                <label>SO DIEN THOAI:</label><button (click)="schoolDrawer.addArrayData('phones')">+</button><br>
+                <div *ngFor="let item of schoolDrawer.data.phones, index as i" class="drawer__form__formGroup">
+                    <input [ngModel]="schoolDrawer.data.phones[i]" (change)="schoolDrawer.updateArrayData('phones',i,$event)" type="text" class="drawer__form__input form-control" placeholder="SO DIEN THOAI">
+                    <button (click)="schoolDrawer.deleteArrayData('phones',i)">x</button>
+                </div>
+                <label>EMAIL:</label><button (click)="schoolDrawer.addArrayData('emails')">+</button><br>
+                <div *ngFor="let item of schoolDrawer.data.emails, index as i" class="drawer__form__formGroup">
+                    <input [ngModel]="schoolDrawer.data.emails[i]" (change)="schoolDrawer.updateArrayData('emails',i,$event)" type="text" class="drawer__form__input form-control" placeholder="EMAIL">
+                    <button (click)="schoolDrawer.deleteArrayData('emails',i)">x</button>
+                </div>
+                <label>HOTLINE:</label><button (click)="schoolDrawer.addArrayData('hotlines')">+</button><br>
+                <div *ngFor="let item of schoolDrawer.data.hotlines, index as i" class="drawer__form__formGroup">
+                    <input [ngModel]="schoolDrawer.data.hotlines[i]" (change)="schoolDrawer.updateArrayData('hotlines',i,$event)" type="text" class="drawer__form__input form-control" placeholder="HOTLINE">
+                    <button (click)="schoolDrawer.deleteArrayData('hotlines',i)">x</button>
+                </div>
+                <label>FAX:</label><button (click)="schoolDrawer.addArrayData('faxes')">+</button><br>
+                <div *ngFor="let item of schoolDrawer.data.faxes, index as i" class="drawer__form__formGroup">
+                    <input [ngModel]="schoolDrawer.data.faxes[i]" (change)="schoolDrawer.updateArrayData('faxes',i,$event)" type="text" class="drawer__form__input form-control" placeholder="FAX">
+                    <button (click)="schoolDrawer.deleteArrayData('faxes',i)">x</button>
+                </div>
+                <label>WEBSITE:</label>
+                <input [(ngModel)]="schoolDrawer.data.website" type="text" class="drawer__form__input form-control" placeholder="WEBSITE">
+                <label>THONG TIN:</label>
+                <input [(ngModel)]="schoolDrawer.data.desc" type="text" class="drawer__form__input form-control" placeholder="THONG TIN">
+                <button class="btn btn-primary">Edit Courses</button>
+                <button *ngIf="!schoolDrawer.isNew" class="btn btn-primary" (click)="schoolDrawer.save()">Save</button>
+                <button *ngIf="schoolDrawer.isNew" class="btn btn-primary" (click)="schoolDrawer.create()">Add</button>
+                <button class="btn btn-danger" (click)="schoolDrawer.delete()">Delete</button>
+            </div>
+        </div>
+</section>

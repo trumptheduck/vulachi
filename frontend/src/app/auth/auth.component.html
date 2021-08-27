@@ -1,0 +1,9 @@
+<section class="main">
+  <div class="main__wrapper">
+      <p class="main__wrapper__title">Đăng nhập</p>
+      <p class="main__wrapper__subtitle">Hãy nhập tài khoản của bạn để tiếp tục</p>
+      <input [(ngModel)]="serial" class="form-control main__wrapper__input" type="text" placeholder="CMND/CCCD">
+      <input [(ngModel)]="password" class="form-control main__wrapper__input" type="password" placeholder="Mật khẩu">
+      <div class="main__wrapper__submit" (click)="login()">Tiếp tục</div>
+  </div>
+</section>

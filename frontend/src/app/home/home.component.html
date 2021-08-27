@@ -1,0 +1,68 @@
+<section class="home">
+  <section class="banner">
+    <div id="cdk-overlay-0" class="cdk-overlay-pane" dir="ltr">
+      <div class="banner__overlay">
+        <p class="banner__overlay__title">Giải Pháp Hỗ Trợ Cho Thí Sinh Thi THPTQG</p>
+        <p class="banner__overlay__subtitle">Tra cứu thông tin và viết hồ sơ dễ dàng</p>
+        <div class="banner__overlay__button">BẮT ĐẦU NGAY</div>
+      </div>
+    </div>
+   <swiper
+      [slidesPerView]="1"
+      [spaceBetween]="0"
+      [autoplay]="true"
+      >
+      <ng-template swiperSlide><div style="background-image: url('../../assets/images/img1.jpg');" class="banner__item"></div></ng-template>
+      <ng-template swiperSlide><div style="background-image: url('../../assets/images/img2.jpg');" class="banner__item"></div></ng-template>
+      <ng-template swiperSlide><div style="background-image: url('../../assets/images/img3.jpg');" class="banner__item"></div></ng-template>
+      <ng-template swiperSlide><div style="background-image: url('../../assets/images/img4.jpg');" class="banner__item"></div></ng-template>
+    </swiper>
+  </section>
+  <section class="content">
+    <div class="content__wrapper">
+      <div class="content__before">
+        <img src="../../assets/images/mock.jpg" class="content__before__image">
+        <div class="content__before__text">
+          <p class="content__before__text__title">TÂM THƯ</p>
+          <p class="content__before__text__paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente maxime laudantium ad reprehenderit totam. Esse fugit repudiandae vel ab perferendis non. Error maxime eos exercitationem itaque officia deserunt, veniam ut!</p>
+          <a><p class="content__before__text__readmore">Xem thêm</p></a>
+        </div>
+        </div>
+      <div class="content__after">
+        
+        <div class="content__after__top"><p class="content__after__top__title">Bắt đầu ngay bây giờ</p></div>
+        <div class="content__after__section">
+          <p class="content__after__section__title">Tra cứu trường Đại Học</p>
+          <p class="content__after__section__paragraph">Tra cứu thông tin trường đại học nhanh, đầy đủ và chính xác nhất, tất cả chỉ trên một nền tảng</p>
+          <a><div class="content__after__section__readmore">Tra cứu ngay</div></a>
+        </div>
+        <div class="content__after__section">
+          <p class="content__after__section__title">Tạo hồ sơ thi THPTQG</p>
+          <p class="content__after__section__paragraph">Đã quá mệt mỏi về việc ghi sai hồ sơ? Nhập hồ sơ và in ngay. Chỉ một lần, chính xác, tiện lợi</p>
+          <a><div class="content__after__section__readmore">Tạo hồ sơ</div></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="features">
+    <p class="features__title">Hỗ trợ Thí sinh</p>
+    <div class="features__wrapper">
+      <div class="features__wrapper__item">
+        <mat-icon class="features__wrapper__item__icon">search</mat-icon>
+        <p class="features__wrapper__item__title">Tra cứu thông tin</p>
+      </div>
+      <div class="features__wrapper__item">
+        <mat-icon class="features__wrapper__item__icon">description</mat-icon>
+        <p class="features__wrapper__item__title">Tạo hồ sơ Online</p>
+      </div>
+      <div class="features__wrapper__item">
+        <mat-icon class="features__wrapper__item__icon">show_chart</mat-icon>
+        <p class="features__wrapper__item__title">So sánh điểm chuẩn</p>
+      </div>
+      <div class="features__wrapper__item">
+        <mat-icon class="features__wrapper__item__icon">accessibility_new</mat-icon>
+        <p class="features__wrapper__item__title">Sắp xếp nguyện vọng</p>
+      </div>
+    </div>
+  </section>
+</section>

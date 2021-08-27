@@ -1,0 +1,110 @@
+.title {
+  margin-top: 30px;
+  margin-left: 10px;
+  font-size: 30px;
+  line-height: 10px;
+}
+.subtitle {
+  margin-top: 30px;
+  margin-left: 10px;
+  font-size: 20px;
+  line-height: 0px;
+}
+
+.main {
+
+  &__filter {
+      padding: 30px;
+      padding-top: 15px;
+      &__search {
+          width: 400px;
+      }
+  }
+  &__wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__inner {
+          width: 98%;
+      }
+  }
+}
+
+.table {
+  & td,th,tr {
+      border: solid gray 1px;
+      padding: 5px;
+  }
+  & th {
+      text-align: center;
+  }
+}
+
+.drawer {
+  &__wrapper {
+      position: fixed;
+      right: 0%;
+      top: 70px;
+      width: 550px;
+      height: 100%;
+      background-color: white;
+      padding: 20px;
+      transform: translateX(100%);
+      transition-duration: 0.3s;
+      box-shadow: -2px 0px 10px grey;
+      overflow-y: scroll;
+      padding-bottom: 400px;
+
+      &--visible {
+          transform: translateX(0%);
+      }
+  }
+  &__title {
+      font-size: 30px;
+      margin-top: 4px;
+  }
+  &__form {
+      padding-top: 20px;
+
+      &__input, label {
+          margin-bottom: 15px;
+          overflow: hidden;
+      }
+      button {
+          float: right;
+          margin: 5px;
+          overflow: hidden;
+      }
+      &__formGroup {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+
+          button {
+              margin: 5px;
+              float: none;
+              height: 30px;
+              width: 40px;
+          }
+      }
+  }
+  &__close {
+      float: right;
+  }
+  &__box {
+    padding: 20px;
+    padding-bottom: 50px;
+    border: solid lightslategray 1px;
+    margin-bottom: 5px;
+  }
+}
+
+.material-icons {
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+.material-icons:hover {
+    color: cyan;
+}

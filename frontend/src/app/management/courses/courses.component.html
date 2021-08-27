@@ -1,0 +1,64 @@
+<p class="title">DANH SACH NGANH HOC</p>
+<p class="subtitle">{{schoolData.name}}|{{schoolData.code}}</p>
+<button class="btn btn-success" (click)="getSchoolData()" style="float: right; margin-right: 20px;">Refresh</button>
+<section class="main">
+  <div class="main__filter">
+      <input [(ngModel)]="searchQuery" (ngModelChange)="onSearch(searchQuery)" type="text" class="main__filter__search form-control" placeholder="Search...">
+  </div>
+  <div class="main__wrapper">
+      <div class="main__wrapper__inner">
+          <table class="table">
+          <tr>
+              <th>TEN NGANH HOC</th>
+              <th>MA NGANH</th>
+              <th>SO NAM CO DU LIEU</th>
+              <th><span class="material-icons" (click)="courseDrawer.newCourse()">note_add</span>Thêm</th>
+          </tr>
+          <tr *ngFor="let course of schoolData.courses">
+              <td>{{course.name}}</td>
+              <td>{{course.code}}</td>
+              <td>Tổng số data: {{course.data.length}}</td>
+              <td><span class="material-icons" (click)="courseDrawer.editCourse(course)">edit</span>Sửa</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</section>
+<section class="drawer">
+      <div class="drawer__wrapper" [ngClass]="{'drawer__wrapper--visible':courseDrawer.isVisible}">
+          <span class="material-icons drawer__close" (click)="courseDrawer.close()">close</span>
+          <p class="drawer__title">Thong tin nganh hoc</p>
+          <div class="drawer__form">
+              <label>TEN NGANH:</label>
+              <input type="text" [(ngModel)]="courseDrawer.data.name" class="drawer__form__input form-control" placeholder="TEN NGANH">
+              <label>MA NGANH:</label>
+              <input type="text" [(ngModel)]="courseDrawer.data.code" class="drawer__form__input form-control" placeholder="MA NGANH">
+              <label>DU LIEU HANG NAM:</label><button (click)="courseDrawer.addData()">+</button><br>
+              <div *ngFor="let annuallyData of courseDrawer.data.data, index as dataIndex" class="drawer__box">
+                <label>NAM HOC:{{annuallyData.year}}</label>
+                <input type="text" [(ngModel)]="annuallyData.year" class="drawer__form__input form-control" placeholder="NAM HOC">
+                <label>DIEM XET TUYEN:</label><button (click)="courseDrawer.addGroup(dataIndex)">+</button><br>
+                  <div *ngFor="let group of annuallyData.requirements, index as groupIndex" class="drawer__form__formGroup">
+                    <input 
+                    [ngModel]="courseDrawer.data.data[dataIndex].requirements[groupIndex].group" 
+                    (change)="courseDrawer.updateGroupData('group',dataIndex,groupIndex,$event)" type="text" 
+                    class="drawer__form__input form-control" placeholder="KHOI THI">
+                    <input 
+                    [ngModel]="courseDrawer.data.data[dataIndex].requirements[groupIndex].grade" 
+                    (change)="courseDrawer.updateGroupData('grade',dataIndex,groupIndex,$event)" type="number" 
+                    class="drawer__form__input form-control" placeholder="KHOI THI">
+                    <button (click)="courseDrawer.removeGroup(dataIndex,groupIndex)">x</button> 
+                </div> 
+                    <label>CHI TIEU:{{annuallyData.amount}}</label>
+                    <input type="number" [(ngModel)]="annuallyData.amount" class="drawer__form__input form-control" placeholder="NAM HOC">
+                  <button (click)="courseDrawer.removeData(dataIndex)">XOA NAM HOC</button>
+              </div>
+              <label>THONG TIN:</label>
+              <input [(ngModel)]="courseDrawer.data.desc" type="text" class="drawer__form__input form-control" placeholder="THONG TIN">
+              <button class="btn btn-primary">Edit Courses</button>
+              <button *ngIf="!courseDrawer.isNew" class="btn btn-primary" (click)="courseDrawer.save()">Save</button>
+              <button *ngIf="courseDrawer.isNew" class="btn btn-primary" (click)="courseDrawer.create()">Add</button>
+              <button class="btn btn-danger" (click)="courseDrawer.delete()">Delete</button>
+          </div>
+      </div>
+</section>
