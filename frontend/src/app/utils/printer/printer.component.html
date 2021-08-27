@@ -1,12 +1,9 @@
 <p>printer works!</p>
-<button class="btn btn-primary" (click)="drawFromInstruction(drawInstruction,documentContext)">Draw</button>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/pdfmake.min.js" integrity="sha512-Yf733gmgLgGUo+VfWq4r5HAEaxftvuTes86bKvwTpqOY3oH0hHKtX/9FfKYUcpaxeBJxeXvcN4EY3J6fnmc9cA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/vfs_fonts.min.js" integrity="sha512-BDZ+kFMtxV2ljEa7OWUu0wuay/PAsJ2yeRsBegaSgdUhqIno33xmD9v3m+a2M3Bdn5xbtJtsJ9sSULmNBjCgYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<canvas #documentPage1 width="1654" height="2339"></canvas>
-<canvas #documentPage2 width="1654" height="2339"></canvas>
-<canvas #documentPage3 width="1654" height="2339"></canvas>
-<canvas #documentPage4 width="1654" height="2339"></canvas>
-<canvas #documentPage5 width="1654" height="2339"></canvas>
+<button class="btn btn-primary" (click)="drawFromInstruction(documentContext)">Draw</button>
+<button class="btn btn-primary" (click)="savePDF()">Save</button>
+<canvas #documentPage1 style="display: none;" width="1654" height="2339"></canvas>
+<canvas #documentPage2 style="display: none;" width="1654" height="2339"></canvas>
+<canvas #documentPage3 style="display: none;" width="1654" height="2339"></canvas>
+<canvas #documentPage4 style="display: none;" width="1654" height="2339"></canvas>
+<canvas #documentPage5 style="display: none;" width="1654" height="2339"></canvas>
 <canvas #documentPage6 style="display: none;" width="1654" height="2339"></canvas>
-<canvas #documentPage7 style="display: none;" width="1654" height="2339"></canvas>
-<canvas #documentPage8 style="display: none;" width="1654" height="2339"></canvas>
