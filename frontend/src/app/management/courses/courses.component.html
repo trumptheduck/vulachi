@@ -33,6 +33,8 @@
               <input type="text" [(ngModel)]="courseDrawer.data.name" class="drawer__form__input form-control" placeholder="TEN NGANH">
               <label>MA NGANH:</label>
               <input type="text" [(ngModel)]="courseDrawer.data.code" class="drawer__form__input form-control" placeholder="MA NGANH">
+              <label>MA TRUONG:</label>
+              <input type="text" [(ngModel)]="courseDrawer.data.schoolCode" class="drawer__form__input form-control" placeholder="MA TRUONG">
               <label>DU LIEU HANG NAM:</label><button (click)="courseDrawer.addData()">+</button><br>
               <div *ngFor="let annuallyData of courseDrawer.data.data, index as dataIndex" class="drawer__box">
                 <label>NAM HOC:{{annuallyData.year}}</label>
@@ -54,8 +56,7 @@
                   <button (click)="courseDrawer.removeData(dataIndex)">XOA NAM HOC</button>
               </div>
               <label>THONG TIN:</label>
-              <input [(ngModel)]="courseDrawer.data.desc" type="text" class="drawer__form__input form-control" placeholder="THONG TIN">
-              <button class="btn btn-primary">Edit Courses</button>
+              <ckeditor [(ngModel)]="courseDrawer.data.desc" [editor]="Editor" (ready)="setHeight($event)" data="<p>Thong tin nganh!</p>"></ckeditor>
               <button *ngIf="!courseDrawer.isNew" class="btn btn-primary" (click)="courseDrawer.save()">Save</button>
               <button *ngIf="courseDrawer.isNew" class="btn btn-primary" (click)="courseDrawer.create()">Add</button>
               <button class="btn btn-danger" (click)="courseDrawer.delete()">Delete</button>

@@ -13,7 +13,7 @@
                 <th><span class="material-icons" (click)="schoolDrawer.newSchool()">note_add</span>Thêm</th>
             </tr>
             <tr *ngFor="let school of schoolData">
-                <td>{{school.name}}</td>
+                <td><img [src]="school.thumbnail" height="60" alt="">{{school.name}}</td>
                 <td>{{school.code}}</td>
                 <td>{{getRegion(school.region)}}</td>
                 <td><a routerLink="/admin/courses" [queryParams]="{id:school._id}"><span class="material-icons">edit</span></a>Sửa | Tổng số khóa học: {{school.courses.length}}</td>
@@ -63,9 +63,10 @@
                 </div>
                 <label>WEBSITE:</label>
                 <input [(ngModel)]="schoolDrawer.data.website" type="text" class="drawer__form__input form-control" placeholder="WEBSITE">
+                <label>LINK LOGO:</label>
+                <input [(ngModel)]="schoolDrawer.data.thumbnail" type="text" class="drawer__form__input form-control" placeholder="URL LOGO">
                 <label>THONG TIN:</label>
-                <input [(ngModel)]="schoolDrawer.data.desc" type="text" class="drawer__form__input form-control" placeholder="THONG TIN">
-                <button class="btn btn-primary">Edit Courses</button>
+                <ckeditor [(ngModel)]="schoolDrawer.data.desc" [editor]="Editor" (ready)="setHeight($event)" data="<p>Thong tin truong!</p>"></ckeditor>
                 <button *ngIf="!schoolDrawer.isNew" class="btn btn-primary" (click)="schoolDrawer.save()">Save</button>
                 <button *ngIf="schoolDrawer.isNew" class="btn btn-primary" (click)="schoolDrawer.create()">Add</button>
                 <button class="btn btn-danger" (click)="schoolDrawer.delete()">Delete</button>

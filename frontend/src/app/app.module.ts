@@ -17,7 +17,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { UtilsComponent } from './utils/utils.component';
 import { PrinterComponent } from './utils/printer/printer.component';
-
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { LookupComponent } from './lookup/lookup.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PrinterComponent } from './utils/printer/printer.component';
     AuthComponent,
     DashboardComponent,
     UtilsComponent,
-    PrinterComponent
+    PrinterComponent,
+    LookupComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { PrinterComponent } from './utils/printer/printer.component';
     SwiperModule,
     MatIconModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    CKEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

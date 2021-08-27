@@ -11,6 +11,7 @@ const schoolSchema = new mongoose.Schema(
     emails: [{ type: String }],
     website: { type: String },
     desc: { type: String },
+    thumbnail: { type: String},
     courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }]
   },
   {

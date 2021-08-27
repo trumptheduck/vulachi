@@ -12,5 +12,6 @@ export interface School {
     emails: string[],
     website?: string,
     desc?: string,
-    courses?: Course[]
+    courses?: Course[],
+    thumbnail?: string
 }

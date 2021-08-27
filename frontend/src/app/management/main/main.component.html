@@ -1,7 +1,7 @@
 <div class="cdk-overlay-container">
     <div id="cdk-overlay-0" class="cdk-overlay-pane" dir="rtl">
       <section class="header">
-          <div class="header__title"><p>Dashboard</p></div>
+          <div class="header__title"><p>ControlPanel</p></div>
           <div class="header__menu">
               <a *ngFor="let menuButton of menuButtons,index as i" [routerLink]="'/admin/'+menuButton.destination" (click)="changeButton(i)">
                 <div class="header__menu__button" [ngClass]="{'header__menu__button--selected':menuButton.isSelected}">{{menuButton.text}}</div>

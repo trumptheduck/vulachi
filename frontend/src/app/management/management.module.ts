@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CoursesComponent } from './courses/courses.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { CoursesComponent } from './courses/courses.component';
     MatTableModule,
     MatIconModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CKEditorModule
   ]
 })
 export class ManagementModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { School } from 'src/app/core/models/school.model';
 import { ApiService } from 'src/app/core/services/api.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-schools',
@@ -12,16 +13,27 @@ export class SchoolsComponent implements OnInit {
   schoolData:any;
   searchQuery:string='';
   schoolDrawer:Drawer;
+
+  public Editor:any = ClassicEditor;
   constructor(private API: ApiService) { 
       this.schoolDrawer = new Drawer(this.API,this);
     this.allData = []
   }
+  setHeight(editor:any) {
+    editor.editing.view.change((writer:any) => {
+      writer.setStyle(
+          "height",
+          "200px",
+          editor.editing.view.document.getRoot()
+      );
+    });
+  }
     getSchools(callback:()=>void) {
-      this.API.get("/apis/school/getall").subscribe({next: (response)=>{
-          this.allData = response;
-          this.schoolData = this.allData.slice();
-          return callback();
-      }});
+        this.API.get("/apis/school/getall").subscribe({next: (response)=>{
+            this.allData = response;
+            this.schoolData = this.allData.slice();
+            return callback();
+        }});
     }
   getRegion(region: string): string {
     var vnRegion:string = "NULL";
@@ -90,6 +102,7 @@ class Drawer {
             code: "",
             region: "NORTH",
             address: "",
+            thumbnail: ""
         }
         this.data = this.copyData(this.emptyData);
     }
@@ -172,11 +185,13 @@ class Drawer {
         }});
     }
     delete():void {
-        this.API.post("/apis/school/delete",this.data).subscribe({next: (response) => {
-            this.component.getSchools(()=>{
-                this.close();
-            });
-        }});
+        if (confirm("Do you really want to delete this? Changes are permanent")) {
+            this.API.post("/apis/school/delete",this.data).subscribe({next: (response) => {
+                this.component.getSchools(()=>{
+                    this.close();
+                });
+            }});
+        }
     }
     open():void {
         this.isVisible = true;

@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors())
 
-// app.use(express.static(path.join(__dirname, '../frontend/dist/frontend')))
+app.use(express.static(path.join(__dirname, '../frontend/dist/frontend')))
 app.use(indexRoutes);
 // app.get('/static/images/:name',function(req,res) {
 //   res.sendFile(path.join(__dirname, './resources/images/'+req.params.name))
@@ -28,15 +28,15 @@ app.use(indexRoutes);
 //     res.sendFile(path.join(__dirname, './resources/images/nophoto.jpg'))
 //   }
 // })
-// app.get('/', function(req, res) {
-//   res.sendFile(path.join(__dirname, '../frontend/dist/frontend'))
-// })
-// app.use((req,res,next)=>{
-//   res.sendFile(path.join(__dirname, '../frontend/dist/frontend/index.html'))
-// })
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, '../frontend/dist/frontend'))
+})
+app.use((req,res,next)=>{
+  res.sendFile(path.join(__dirname, '../frontend/dist/frontend/index.html'))
+})
 
 app.get('/', function(req, res) {
-      res.send('Server is running')
+  res.sendFile(path.join(__dirname, '../frontend/dist/frontend/index.html'))
 })
 
 ///////////////////////////////////////////////////////////////

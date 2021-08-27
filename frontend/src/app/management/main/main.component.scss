@@ -17,6 +17,7 @@
         align-items: center;
         
         & p {
+            margin-top: 15px;
             margin-left: 20px;
             font-size: 40px;
             font-style: italic;
@@ -41,7 +42,7 @@
             transition-duration: 0.2s;
             cursor: pointer;
 
-            &:hover, &--selected {
+            &:hover{
                 background-color: rgb(177, 177, 177);
             }
         }

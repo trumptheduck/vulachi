@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/core/models/course.model';
 import { School } from 'src/app/core/models/school.model';
 import { ApiService } from 'src/app/core/services/api.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-courses',
@@ -15,6 +16,8 @@ export class CoursesComponent implements OnInit {
   coursesData:any;
   searchQuery:string ='';
   courseDrawer:Drawer;
+
+  public Editor:any = ClassicEditor;
   constructor(
     private route: ActivatedRoute,
     public router: Router,
@@ -42,6 +45,15 @@ export class CoursesComponent implements OnInit {
         this.courseDrawer.emptyData.school = params.id;
         this.getSchoolData();
     }})
+  }
+  setHeight(editor:any) {
+    editor.editing.view.change((writer:any) => {
+      writer.setStyle(
+          "height",
+          "200px",
+          editor.editing.view.document.getRoot()
+      );
+    });
   }
   getSchoolData(callback:()=>void=()=>{}):void {
     this.API.get(`/apis/school/get?id=${this.schoolId}`).subscribe({next: (res)=>{
@@ -91,6 +103,7 @@ class Drawer {
       this.emptyData = {
           name: "",
           code: "",
+          schoolCode: "",
           school: component.schoolId,
           data: [
             {
@@ -117,6 +130,7 @@ class Drawer {
   newCourse() {
       this.isNew = true;
       this.refreshData();
+      this.data.schoolCode = this.component.schoolData.code;
       this.open();
   }
   editCourse(course:Course):void {

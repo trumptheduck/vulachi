@@ -19,6 +19,8 @@ const userSchema = new mongoose.Schema(
       placeOfBirth: {type: String},
       race: {type: String},
       isForeign: {type: Boolean},
+      phone: {type: String},
+      email: {type: String}
     }
   },
   {

@@ -32,15 +32,9 @@
     align-items: center;
 
     &__image {
-      width: 60px;
-      height: 60px;
-      filter: invert(21%) sepia(9%) saturate(5099%) hue-rotate(202deg) brightness(99%) contrast(98%);
-      cursor: pointer;
-    }
-    &__title {
-      font-size: 17px;
-      margin-top: 6px;
-      color: #2f3377;
+      width: 160px;
+      height: 160px;
+      filter: grayscale(1) invert(21%) sepia(9%) saturate(5099%) hue-rotate(202deg) brightness(60%) contrast(80%);
       cursor: pointer;
     }
   }
