@@ -1,9 +1,176 @@
-<p>printer works!</p>
-<button class="btn btn-primary" (click)="drawFromInstruction(documentContext)">Draw</button>
-<button class="btn btn-primary" (click)="savePDF()">Save</button>
+<p style="font-family: Handwriting;">printer works!</p>
 <canvas #documentPage1 style="display: none;" width="1654" height="2339"></canvas>
 <canvas #documentPage2 style="display: none;" width="1654" height="2339"></canvas>
 <canvas #documentPage3 style="display: none;" width="1654" height="2339"></canvas>
 <canvas #documentPage4 style="display: none;" width="1654" height="2339"></canvas>
 <canvas #documentPage5 style="display: none;" width="1654" height="2339"></canvas>
 <canvas #documentPage6 style="display: none;" width="1654" height="2339"></canvas>
+<section class="banner">
+  <img src="../../assets/images/haneen-krimly-_D1DKks6wgs-unsplash.jpg" class="banner__image">
+</section>
+<section class="form">
+  <p class="title">Hồ sơ thi THPT Quốc Gia</p>
+  <p class="subtitle">Hãy nhập đầy đủ thông tin, và chỉ với một nút ấn, hồ sơ sẽ được tải xuống và có thể in ngay lập tức!</p>
+  <div class="form__wrapper">
+    <label>Sở GD và ĐT</label>
+    <input class="form-control" type="text" [(ngModel)]="basicProfile.DOEduName">
+    <label>Mã sở</label><a target="_blank" href="https://thptquocgia.edu.vn/ky-thi-thpt-quoc-gia/danh-sach-hoi-dong-thi-va-ma-hoi-dong-thi-tot-nghiep-thpt-2021-1325.html"><button class="btn btn-success">Tra cứu</button></a>
+    <input class="form-control" type="text" maxlength="2" [(ngModel)]="basicProfile.DOEduCode"> 
+    <label>Họ và Tên  </label>
+    <input class="form-control" type="text" [(ngModel)]="basicProfile.fullname"> 
+    <label>Giới tính </label>
+    <select class="form-control" [(ngModel)]="basicProfile.gender">
+      <option value="0">Nam</option>  
+      <option value="1">Nữ</option>  
+    </select>
+    <label>Nơi sinh  </label>
+    <input class="form-control" type="text" [(ngModel)]="basicProfile.birthPlace"> 
+    <label>Ngày sinh </label>
+    <input class="form-control" type="text" maxlength="6" [(ngModel)]="basicProfile.birthDate"> 
+    <label>Dân tộc </label>
+    <input class="form-control" type="text" [(ngModel)]="basicProfile.race"> 
+    <label>Quốc tịch Nước ngoài </label>
+    <input type="checkbox" [(ngModel)]="basicProfile.isForeign"> <br>
+    <label>Mã nơi sinh sống ( [Mã tỉnh][Mã huyện][Mã xã], VD: 123245) : </label> <a target="_blank" href="https://tuyensinh247.com/ma-cac-truong-thpt-moi-nhat-toan-quoc-bo-gd-r150.html"><button class="btn btn-success">Tra cứu</button></a>
+    <input class="form-control" type="text" maxlength="6" [(ngModel)]="basicProfile.settlementCode"> 
+    <label>CCCD  </label>
+    <input class="form-control" type="text" maxlength="12" [(ngModel)]="basicProfile.socialSecurity"> 
+    <label>Địa chỉ </label>
+    <input class="form-control" type="text" [(ngModel)]="basicProfile.settlementAddress"> 
+    <label>Ở trên 18 tháng ở khu vực 1 </label>
+    <input type="checkbox" [(ngModel)]="basicProfile.is18MArea1"> <br>
+    <label>Ở trên 18 tháng ở khu vực đặc biệt khó khăn </label>
+    <input type="checkbox" [(ngModel)]="basicProfile.is18MSpecialArea"> <br>
+    <label>Nơi học lớp 10 </label><a target="_blank" href="https://tuyensinh247.com/ma-cac-truong-thpt-moi-nhat-toan-quoc-bo-gd-r150.html"><button class="btn btn-success">Tra cứu</button></a>
+    <input class="form-control" type="text" [(ngModel)]="basicProfile.highschool.grade10.address"> 
+    <label>Mã tỉnh </label>
+    <input class="form-control" type="text" maxlength="2" [(ngModel)]="basicProfile.highschool.grade10.provinceCode"> 
+    <label>Mã trường </label>
+    <input class="form-control" type="text" maxlength="3" [(ngModel)]="basicProfile.highschool.grade10.schoolCode"> 
+    <label>Nơi học lớp 11 </label>
+    <button class="btn btn-success" (click)="sameAs10()">Như lớp 10</button>
+    <input class="form-control" type="text" [(ngModel)]="basicProfile.highschool.grade11.address"> 
+    <label>Mã tỉnh </label>
+    <input class="form-control" type="text" maxlength="2" [(ngModel)]="basicProfile.highschool.grade11.provinceCode"> 
+    <label>Mã trường </label>
+    <input class="form-control" type="text" maxlength="3" [(ngModel)]="basicProfile.highschool.grade11.schoolCode"> 
+    <label>Nơi học lớp 12 </label>
+    <button class="btn btn-success" (click)="sameAs11()">Như lớp 11</button>
+    <input class="form-control" type="text" [(ngModel)]="basicProfile.highschool.grade10.address"> 
+    <label>Mã tỉnh </label>
+    <input class="form-control" type="text" maxlength="2" [(ngModel)]="basicProfile.highschool.grade12.provinceCode"> 
+    <label>Mã trường </label>
+    <input class="form-control" type="text" maxlength="3" [(ngModel)]="basicProfile.highschool.grade12.schoolCode"> 
+    <label>Tên lớp 12 </label>
+    <input class="form-control" type="text" [(ngModel)]="basicProfile.highschool.gradeName"> 
+    <label>SDT </label>
+    <input class="form-control" type="text" [(ngModel)]="basicProfile.phone"> 
+    <label>Email </label>
+    <input class="form-control" type="text" [(ngModel)]="basicProfile.email"> 
+    <label>Thông tin liên lạc </label>
+    <input class="form-control" type="text" [(ngModel)]="basicProfile.contact">
+    <label>Xét tuyển đại học cao đẳng </label>
+    <input type="checkbox" [(ngModel)]="examProfile.isForUniAdmission"> <br>
+    <label>Học chương trình THPT </label>
+    <input type="checkbox" [(ngModel)]="examProfile.isHighSchool"> <br>
+    <label>Học chương trình GDTX </label>
+    <input type="checkbox" [(ngModel)]="examProfile.isTrainCamp"> <br>
+    <label>Thí sinh tự do chưa tốt nghiệp THPT </label>
+    <input type="checkbox" [(ngModel)]="examProfile.isFreeNoHighSchool"> <br>
+    <label>Thí sinh tự do đã tốt nghiệp THPT </label>
+    <input type="checkbox" [(ngModel)]="examProfile.isFreeHighSchool"> <br>
+    <label>Tên hội đồng thi </label>
+    <input class="form-control" type="text" [(ngModel)]="examProfile.councilName"> 
+    <label>Mã hội đồng thi </label>
+    <input class="form-control" type="text" maxlength="2" [(ngModel)]="examProfile.councilCode">
+    <label>Nơi đăng ký dự thi  </label>
+    <input class="form-control" type="text" [(ngModel)]="examProfile.examLocationAddress"> 
+    <label>Mã nơi đăng ký dự thi  </label>
+    <input class="form-control" type="text" maxlength="3" [(ngModel)]="examProfile.examLocationCode"> 
+    <p>Đăng ký bài thi</p>
+    <label>Toán </label>
+    <input type="checkbox" [(ngModel)]="examProfile.tests.math"> <br>
+    <label>Văn </label>
+    <input type="checkbox" [(ngModel)]="examProfile.tests.literature"> <br>
+    <label>Ngoại ngữ </label>
+    <select class="form-control" [(ngModel)]="examProfile.tests.forLang">
+        <option value="N1">Tiếng Anh</option>
+        <option value="N2">Tiếng Nga</option>
+        <option value="N3">Tiếng Pháp</option>
+        <option value="N4">Tiếng Trung Quốc </option>
+        <option value="N5">Tiếng Đức</option>
+        <option value="N6">Tiếng Nhật</option>
+    </select>
+    <label>KHTN  </label>
+    <input type="checkbox" [(ngModel)]="!examProfile.tests.isSocialScience"> <br>
+    <label>KHXH </label>
+    <input type="checkbox" [(ngModel)]="examProfile.tests.isSocialScience"> <br>
+    <p>Đăng ký bài thi tổ hợp (Thí sinh tự do)</p>
+    <label>Lý </label>
+    <input type="checkbox" [(ngModel)]="examProfile.testsFree.physics"> <br>
+    <label>Hóa </label>
+    <input type="checkbox" [(ngModel)]="examProfile.testsFree.chemistry"> <br>
+    <label>Sinh </label>
+    <input type="checkbox" [(ngModel)]="examProfile.testsFree.biology"> <br>
+    <label>Sử </label>
+    <input type="checkbox" [(ngModel)]="examProfile.testsFree.history"> <br>
+    <label>Địa  </label>
+    <input type="checkbox" [(ngModel)]="examProfile.testsFree.geography"> <br>
+    <label>GDCD </label>
+    <input type="checkbox" [(ngModel)]="examProfile.testsFree.civilEdu"> <br>
+    <p>Miễn thi môn tiếng anh bằng Chứng chỉ:</p>
+    <label>Tên chứng chỉ </label>
+    <input class="form-control" type="text" [(ngModel)]="examProfile.forLangCertificate"> 
+    <label>Điểm(nếu có) </label>
+    <input class="form-control" type="text" [(ngModel)]="examProfile.forLangGrades"> 
+    <p>Bảo lưu kết quả thi</p>
+    <label>Toán </label>
+    <input class="form-control" type="number" min="0" max="10" [(ngModel)]="examProfile.retained.math"> 
+    <label>Văn </label>
+    <input class="form-control" type="number" min="0" max="10" [(ngModel)]="examProfile.retained.literature"> 
+    <label>Sử </label>
+    <input class="form-control" type="number" min="0" max="10" [(ngModel)]="examProfile.retained.history">
+    <label>Địa </label>
+    <input class="form-control" type="number" min="0" max="10" [(ngModel)]="examProfile.retained.geography"> 
+    <label>GDCD </label>
+    <input class="form-control" type="number" min="0" max="10" [(ngModel)]="examProfile.retained.civilEdu"> 
+    <label>Lý </label>
+    <input class="form-control" type="number" min="0" max="10" [(ngModel)]="examProfile.retained.physics"> 
+    <label>Hóa </label>
+    <input class="form-control" type="number" min="0" max="10" [(ngModel)]="examProfile.retained.chemistry"> 
+    <label>Sinh </label>
+    <input class="form-control" type="number" min="0" max="10" [(ngModel)]="examProfile.retained.biology">
+    <label>Ngoại ngữ </label>
+    <input class="form-control" type="number" min="0" max="10" [(ngModel)]="examProfile.retained.forLang">
+    <label>Đối tượng ưu tiên </label>
+    <select class="form-control"[(ngModel)]="examProfile.priorityTarget">
+      <option [value]="0">KHÔNG</option>
+      <option [value]="1">01</option>
+      <option [value]="2">02</option>
+      <option [value]="3">03</option>
+      <option [value]="4">04</option>
+      <option [value]="5">05</option>
+      <option [value]="6">06</option>
+      <option [value]="7">07</option>
+    </select>
+    <label>Khu vực tuyển sinh</label>
+    <select class="form-control"[(ngModel)]="examProfile.admissionArea">
+      <option [value]="'1'">KV1</option>
+      <option [value]="'2NT'">KV2-NT</option>
+      <option [value]="'2'">KV2</option>
+      <option [value]="'3'">KV3</option>
+    </select>
+    <label>Năm tốt nghiệp</label>
+    <input class="form-control" type="number" maxlength="4" [(ngModel)]="examProfile.gradYear">
+    <label>Tuyển sinh liên thông</label>
+    <select class="form-control" [(ngModel)]="examProfile.connectionAdmission">
+      <option [value]="0">KHÔNG</option>
+      <option [value]="1">TC</option>
+      <option [value]="2">CĐ</option>
+      <option [value]="3">ĐH</option>
+    </select>
+    <button class="btn btn-success" (click)="savePDF()">Tải xuống hồ sơ</button>
+    <button class="btn btn-primary" (click)="saveLocal()">Lưu hồ sơ</button>
+    <p>Vui lòng kiên nhẫn! Hồ sơ của bạn sẽ sẵn sàng sau 30s đến vài phút!</p>
+  </div>
+</section>

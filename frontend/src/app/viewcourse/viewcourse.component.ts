@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from '../core/models/course.model';
 import { ApiService } from '../core/services/api.service';
+import { WishesService } from '../core/services/wishes.service';
 
 @Component({
   selector: 'app-viewcourse',
@@ -16,11 +18,15 @@ export class ViewcourseComponent implements OnInit {
   yAxisLabel: string = 'Điểm chuẩn';
   multi: any[];
   dataReversed: any[];
-
+  screenWidth: any;
+  groups:string[] = [];
+  group: string = '';
   constructor(
     private route: ActivatedRoute,
     public router: Router,
-    private API: ApiService
+    private API: ApiService,
+    private $wish: WishesService,
+    private _snackBar: MatSnackBar
   )  {
     this.multi = [];
     this.dataReversed = []
@@ -79,6 +85,7 @@ export class ViewcourseComponent implements OnInit {
         }
       })
     })
+    this.groups = columns;
     columns.forEach(column => {
       var resSeries: any[] = [];
       this.courseData.data.forEach(year => {
@@ -99,6 +106,45 @@ export class ViewcourseComponent implements OnInit {
     })
     return result;
   }
+  getWidth():number {
+    var ratio = 1;
+    if (this.screenWidth < 1200) {
+      ratio = this.screenWidth/1500;
+    } 
+    return 1000*ratio
+  }
+  getHeight():number {
+    var ratio = 1;
+    if (this.screenWidth < 1200) {
+      ratio = this.screenWidth/1500;
+      return 700*ratio
+    }
+    return 450
+  }
+  addWish(): void {
+    if (this.group === "") {
+      this._snackBar.open("Hãy chọn khối thi!","",{
+        duration: 1000
+      });
+    } else {
+      this.$wish.addWish({
+        universityCode: this.courseData.schoolCode,
+        courseCode: this.courseData.code,
+        courseName: this.courseData.name,
+        examiningGroup: this.group
+      })
+      var snackBarRef = this._snackBar.open("Thêm nguyện vọng thành công!","Xem",{
+        duration: 1000
+      });
+      snackBarRef.onAction().subscribe(
+        () => {
+          this.router.navigate(['home/wishes']);
+        }
+      );
+    }
+  }
   ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
+   
   }
 }

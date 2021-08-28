@@ -165,9 +165,9 @@ export class InstructionService {
       , exam.gradYear.toString().charAt(1)
       , exam.gradYear.toString().charAt(2)
       , exam.gradYear.toString().charAt(3)
-      , this.addTick(exam.connectionAdmission === 0)
       , this.addTick(exam.connectionAdmission === 1)
       , this.addTick(exam.connectionAdmission === 2)
+      , this.addTick(exam.connectionAdmission === 3)
       , wishes.length
     ]
     contentArray2 = contentArray2.concat(this.generateWishData(wishes));

@@ -7,8 +7,11 @@
       <div class="course__titlebar">
         <p class="course__name">{{courseData.name}}</p>
         <p class="course__code">Mã ngành: {{courseData.code}} | Mã trường: {{courseData.schoolCode}}</p>
-      <div class="course__addwish"><p>Thêm nguyện vọng</p></div>
-
+      <div class="course__addwish" (click)="addWish()" ><p>Thêm nguyện vọng</p></div>
+        <select [(ngModel)]="group" type="text" class="examGroup form-control">
+          <option value="">Khối</option>
+          <option *ngFor="let examGroup of groups" [value]="examGroup">{{examGroup}}</option>
+        </select>
       </div>
 
     </div>
@@ -16,7 +19,7 @@
   <section class="chart">
     <div class="chart__wrapper">
       <ngx-charts-line-chart
-      [view]="[1000, 450]"
+      [view]="[getWidth(), getHeight()]"
       [legend]="true"
       [showXAxisLabel]="true"
       [showYAxisLabel]="true"

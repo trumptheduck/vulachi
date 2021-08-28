@@ -8,6 +8,7 @@ import { LookupComponent } from './lookup/lookup.component';
 import { UniversityComponent } from './university/university.component';
 import { PrinterComponent } from './utils/printer/printer.component';
 import { ViewcourseComponent } from './viewcourse/viewcourse.component';
+import { WishesComponent } from './wishes/wishes.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,14 @@ const routes: Routes = [
         path: "viewCourse",
         component: ViewcourseComponent
       },
+      {
+        path: "profilePrinter",
+        component: PrinterComponent,
+      },
+      {
+        path: "wishes",
+        component: WishesComponent,
+      },
     ]
   },
   {
@@ -40,10 +49,6 @@ const routes: Routes = [
   {
     path: "login",
     component: AuthComponent,
-  },
-  {
-    path: "test",
-    component: PrinterComponent,
   },
   {
     path: "admin",

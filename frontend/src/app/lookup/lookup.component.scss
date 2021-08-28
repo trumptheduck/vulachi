@@ -148,3 +148,107 @@
     background: #373a6d;
   }
 }
+
+@media only screen and (max-width: 900px) {
+  .lookup {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  
+    &__filter {
+      position: relative;
+      width: 90vw;
+      margin-bottom: 15px;
+      
+      label {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-weight: lighter;
+        color: gray;
+      }
+      .form-control {
+        border: 1px solid rgb(189, 188, 188);
+        border-radius: 0px;
+      }
+      &__region, &__marks {
+        width: 30vw;
+      }
+      &__search {
+        position: absolute;
+        right: 0px;
+        top: 30px;
+        width: 45vw;
+      }
+    }
+    &__result {
+      position: relative;
+      width: 90vw;
+      max-height: 600px;
+      overflow-y: scroll;
+      color: #373a6d;
+  
+      &__item {
+        position: relative;
+        border: 1px solid #373a6d;
+        min-height: 100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 10px;
+  
+        &--course {
+          min-height: 100px;
+        }
+  
+        &__image {
+          position: absolute;
+          left: 0px;
+          height: 50px;
+          width: 80px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+          height: 50px;
+
+          }
+        }
+        &__inner {
+          position: absolute;
+          left: 100px;
+          &--course {
+            left: 20px;
+            margin-top: 10px;
+          }
+        }
+        &__title {
+          font-size: 16px;
+          &--course {
+            font-size: 14px;
+          }
+        }
+        &__expand {
+          position: absolute;
+          right: 5px;
+          bottom: 5px;
+          width: 50px;
+          height: 25px;
+          background-color: #373a6d;
+          color: white;
+          font-size: 10px;
+          line-height: 25px;
+          text-align: center;
+          cursor: pointer;
+          transition-duration: 0.2s;
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
+}

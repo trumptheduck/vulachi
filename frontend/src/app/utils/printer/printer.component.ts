@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angula
 import { BasicProfile, ExamProfile, Wish } from 'src/app/core/models/profile.model';
 import { InstructionService } from 'src/app/core/services/instruction.service';
 import { jsPDF } from "jspdf";
+import { WishesService } from 'src/app/core/services/wishes.service';
 
 @Component({
   selector: 'app-printer',
@@ -23,59 +24,56 @@ export class PrinterComponent implements OnInit,AfterViewInit {
   examProfile: ExamProfile;
   wishes: Wish[];
   images:any[]=[];
-  doc:jsPDF = new jsPDF({
-    unit: "cm",
-  });
-  constructor(private InsService: InstructionService) { 
+  constructor(private InsService: InstructionService, private $wish: WishesService) { 
     this.basicProfile = {
-      DOEduName: "Ninh Binh",
-      DOEduCode: "32",
-      fullname: "BUI HOANG NHAT",
+      DOEduName: "",
+      DOEduCode: "",
+      fullname: "",
       gender: "0",
-      birthDate: "160802",
-      birthPlace: "Ninh Binh",
-      race: "Kinh",
+      birthDate: "",
+      birthPlace: "",
+      race: "",
       isForeign: false,
-      socialSecurity: "037202005175",
-      settlementCode: "123245",
-      settlementAddress: "Xom Thuong, Yen Tu, Yen Mo, Ninh Binh",
+      socialSecurity: "",
+      settlementCode: "",
+      settlementAddress: "",
       is18MArea1: false,
       is18MSpecialArea: false,
       highschool: {
         grade10: {
-          address: "Truong THPT Yen Mo B, Yen Mac, Yen Mo, Ninh Binh",
-          provinceCode: "23",
-          schoolCode: "012",
+          address: "",
+          provinceCode: "",
+          schoolCode: "",
         },
         grade11: {
-          address: "Truong THPT Yen Mo B, Yen Mac, Yen Mo, Ninh Binh",
-          provinceCode: "23",
-          schoolCode: "012",
+          address: "",
+          provinceCode: "",
+          schoolCode: "",
         },
         grade12: {
-          address: "Truong THPT Yen Mo B, Yen Mac, Yen Mo, Ninh Binh",
-          provinceCode: "23",
-          schoolCode: "012",
+          address: "",
+          provinceCode: "",
+          schoolCode: "",
         },
-        gradeName: "12A1",
+        gradeName: "",
       },
-      phone: "0333082897",
-      email:"nhatyt123@gmail.com",
-      contact: "Bui Van Chien, 0947909606, Xom Thuong, Yen Tu, Yen Mo, Ninh Binh",
+      phone: "",
+      email:"",
+      contact: "",
     }
     this.examProfile = {
-      isForUniAdmission: true,
-      isHighSchool: true,
+      isForUniAdmission: false,
+      isHighSchool: false,
       isTrainCamp: false,
       isFreeNoHighSchool: false,
       isFreeHighSchool: false,
-      councilName: "So GD&DT Ninh Binh",
-      councilCode: "23",
-      examLocationAddress: "Truong THPT Yen Mo B",
-      examLocationCode: "012",
+      councilName: "",
+      councilCode: "",
+      examLocationAddress: "",
+      examLocationCode: "",
       tests : {
-        math: true,
-        literature: true,
+        math: false,
+        literature: false,
         forLang: "N1",
         isSocialScience: false,
       },
@@ -103,112 +101,15 @@ export class PrinterComponent implements OnInit,AfterViewInit {
       priorityTarget: 0,
       admissionArea: "3",
       gradYear: 2020,
-      connectionAdmission: -1,
+      connectionAdmission: 0,
     }
-    this.wishes = [
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-            {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-      {
-        universityCode: "HUST",
-        courseCode: "IT1",
-        courseName: "IT: Computer Science",
-        examiningGroup: "A1"
-      },
-    ]
+    var JSONdata = window.localStorage.getItem("profile");
+    if (JSONdata !== null) {
+      var data = JSON.parse(JSONdata);
+      this.basicProfile = data.basicProfile;
+      this.examProfile = data.examProfile;
+    }
+    this.wishes = []
   }
   getImagesFromUrlArray(urls:any[], callback:any):void {
     var resultImages: HTMLImageElement[] = [];
@@ -231,7 +132,8 @@ export class PrinterComponent implements OnInit,AfterViewInit {
     })
     
 }
-  drawFromInstruction(contexts:CanvasRenderingContext2D[]):void {
+  drawFromInstruction(contexts:CanvasRenderingContext2D[],callback=()=>{}):void {
+    this.wishes = this.$wish.getWishes()
     this.drawInstruction = this.InsService.getInstruction(this.basicProfile,this.examProfile,this.wishes);
     for (let i = 0; i< this.drawInstruction.length; i++) {
       this.drawInstruction[i].instructions.forEach((instruction:any) => {
@@ -258,20 +160,39 @@ export class PrinterComponent implements OnInit,AfterViewInit {
         }
       })
     }
+    return callback();
   }
   savePDF() :void {
-    this.images = [];
-    this.documentElem.forEach(canvas => {
-      this.images.push(canvas.nativeElement.toDataURL())
-    })
-    this.getImagesFromUrlArray(this.images,(imageArray:HTMLImageElement[])=>{
-      console.log(imageArray.length);
-      imageArray.forEach(image=> {
-        this.doc.addImage(image, 'PNG', 0, 0, 21, 29.7);
-        this.doc.addPage();
+    this.drawFromInstruction(this.documentContext,()=>{
+      var thisDoc:jsPDF = new jsPDF({
+        unit: "cm",
+      });
+      var images:any[] = [];
+      this.documentElem.forEach(canvas => {
+        images.push(canvas.nativeElement.toDataURL())
       })
-      this.doc.save("a4.pdf");
-    })
+      this.getImagesFromUrlArray(images,(imageArray:HTMLImageElement[])=>{
+        console.log(imageArray.length);
+        imageArray.forEach(image=> {
+          thisDoc.addImage(image, 'PNG', 0, 0, 21, 29.7);
+          thisDoc.addPage();
+        })
+        thisDoc.save("HoSoTHPTQG.pdf");
+      })
+    });
+  }
+  saveLocal():void {
+    window.localStorage.setItem("profile",JSON.stringify({basicProfile: this.basicProfile,examProfile:this.examProfile}))
+  }
+  sameAs10() {
+    this.basicProfile.highschool.grade11.address = this.basicProfile.highschool.grade10.address;
+    this.basicProfile.highschool.grade11.schoolCode = this.basicProfile.highschool.grade10.schoolCode;
+    this.basicProfile.highschool.grade11.provinceCode = this.basicProfile.highschool.grade10.provinceCode;
+  }
+  sameAs11() {
+    this.basicProfile.highschool.grade12.address = this.basicProfile.highschool.grade11.address;
+    this.basicProfile.highschool.grade12.schoolCode = this.basicProfile.highschool.grade11.schoolCode;
+    this.basicProfile.highschool.grade12.provinceCode = this.basicProfile.highschool.grade11.provinceCode;
   }
   ngOnInit(): void {
   }
@@ -283,7 +204,7 @@ export class PrinterComponent implements OnInit,AfterViewInit {
       this.documents[i].src = `../../../assets/documents/page${i+1}.png`
       this.documents[i].onload = () => {
         this.documentContext[i].drawImage(this.documents[i],0,0);
-        this.documentContext[i].font = "28px Arial";
+        this.documentContext[i].font = "28px Handwriting";
         this.documentContext[i].lineWidth = 3;
       }
     }

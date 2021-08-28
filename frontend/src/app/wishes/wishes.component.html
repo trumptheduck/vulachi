@@ -1,0 +1,17 @@
+<section class="main">
+  <section class="lookup">
+    <div class="lookup__result">
+      <div *ngFor="let wish of wishes, index as i" class="lookup__result__item lookup__result__item--course">
+         <div class="lookup__result__item__inner lookup__result__item__inner--course">
+          <p class="lookup__result__item__title lookup__result__item__title--course">{{wish.courseName}} | NV{{i+1}}</p>
+          <p class="lookup__result__item__subtitle">Mã ngành: {{wish.courseCode}} | Mã trường: {{wish.universityCode}} | Khối: {{wish.examiningGroup}}</p>
+         </div>
+         <div class="buttonGroup">
+          <button (click)="deleteWish(i)">x</button>
+          <button *ngIf="i!==0" (click)="swapUp(i)">⬆</button>
+          <button *ngIf="i!==wishes.length-1" (click)="swapDown(i)">⬇</button>
+         </div>
+      </div>
+    </div>
+  </section>
+</section>

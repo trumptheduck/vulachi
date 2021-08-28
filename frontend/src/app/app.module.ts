@@ -23,6 +23,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { UniversityComponent } from './university/university.component';
 import { ViewcourseComponent } from './viewcourse/viewcourse.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { WishesComponent } from './wishes/wishes.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     PrinterComponent,
     LookupComponent,
     UniversityComponent,
-    ViewcourseComponent
+    ViewcourseComponent,
+    WishesComponent
   ],
   imports: [
     BrowserModule,

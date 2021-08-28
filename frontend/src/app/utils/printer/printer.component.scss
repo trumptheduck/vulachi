@@ -1,0 +1,112 @@
+@font-face {
+  font-family: 'Handwriting';
+  src: url('../../../assets/Handwriting.otf');
+}
+.form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .form__wrapper {
+    color: #373a6d;
+    width: 1000px;
+    padding: 20px;
+    .form-control {
+      border: 1px solid rgb(189, 188, 188);
+      border-radius: 0px;
+    }
+
+    input, select {
+      margin: 10px
+    }
+    label {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    p {
+      font-size: 30px;
+      margin-top: 20px;
+    }
+    .btn {
+      margin-left: 10px;
+    }
+  }
+}
+
+
+.banner {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+
+  &__image {
+    width: 100vw;
+  }
+}
+.title {
+  margin-top: 50px;
+  font-size: 35px;
+  color: #373a6d;
+}
+.subtitle {
+  color: grey;
+}
+
+
+@media only screen and (max-width: 900px) {
+  .form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  
+    .form__wrapper {
+      color: #373a6d;
+      width: 90vw;
+      padding: 0px;
+      .form-control {
+        border: 1px solid rgb(189, 188, 188);
+        border-radius: 0px;
+      }
+  
+      input, select {
+        margin: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      label {
+        margin-left: 10px;
+      }
+      p {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+      .btn {
+        margin-left: 10px;
+      }
+    }
+  }
+  .title {
+    margin-top: 60px;
+    font-size: 30px;
+    color: #373a6d;
+  }
+  .subtitle {
+    color: grey;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .banner {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  
+    &__image {
+      width: 100vw;
+    }
+  }
+}
