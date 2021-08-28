@@ -2,7 +2,7 @@
   <section class="lookup">
     <div class="lookup__filter">
       <label>Khu vực</label>
-      <select type="text" class="form-control lookup__filter__region">
+      <select [(ngModel)]="regionQuery" (ngModelChange)="onSearch()" type="text" class="form-control lookup__filter__region">
         <option value="ALL">TẤT CẢ</option>
         <option value="NORTH">MIỀN BẮC</option>
         <option value="MIDDLE">MIỀN TRUNG</option>
@@ -10,28 +10,27 @@
       </select>
       <label>Điểm chuẩn</label>
       <div class="custom-slider lookup__filter__marks">
-        <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+        <ngx-slider (userChange)="onSearch()" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
       </div>
-      <input type="text" class="lookup__filter__search form-control" placeholder="Tìm kiếm...">
+      <input [(ngModel)]="searchQuery" (ngModelChange)="onSearch()" type="text" class="lookup__filter__search form-control" placeholder="Tìm kiếm...">
     </div>
     <div class="lookup__result">
-      <div class="lookup__result__item">
-        <img src="https://www.hust.edu.vn/documents/21257/147855/2.+BVP-Logo+BK-RGB/c2f94a78-f713-4af1-b9f0-7f6c4cb94438?version=1.0&t=1483699000000"
-         class="lookup__result__item__image" height="100">
+      <div *ngFor="let school of filteredSchoolData" class="lookup__result__item">
+        <div class="lookup__result__item__image">
+          <img [src]="school.thumbnail" height="100">
+        </div>
          <div class="lookup__result__item__inner">
-          <p class="lookup__result__item__title">Trường Đại học Bách khoa Hà Nội</p>
-          <p class="lookup__result__item__subtitle">Mã trường: HUST | Số khóa học: 4</p>
+          <p class="lookup__result__item__title">{{school.name}}</p>
+          <p class="lookup__result__item__subtitle">Mã trường: {{school.code}} | Số khóa học: {{school.courses.length}}</p>
          </div>
-         <div class="lookup__result__item__expand">Chi tiết</div>
+         <a routerLink="/home/university" [queryParams]="{id:school._id}"><div class="lookup__result__item__expand">Chi tiết</div></a>
       </div>
-      <div class="lookup__result__item">
-        <img src="https://www.hust.edu.vn/documents/21257/147855/2.+BVP-Logo+BK-RGB/c2f94a78-f713-4af1-b9f0-7f6c4cb94438?version=1.0&t=1483699000000"
-         class="lookup__result__item__image" height="100">
-         <div class="lookup__result__item__inner">
-          <p class="lookup__result__item__title">Trường Đại học Bách khoa Hà Nội</p>
-          <p class="lookup__result__item__subtitle">Mã trường: HUST | Số khóa học: 4</p>
+      <div *ngFor="let course of filteredCourseData" class="lookup__result__item lookup__result__item--course">
+         <div class="lookup__result__item__inner lookup__result__item__inner--course">
+          <p class="lookup__result__item__title lookup__result__item__title--course">{{course.name}}</p>
+          <p class="lookup__result__item__subtitle">Mã ngành: {{course.code}} | Mã trường: {{course.schoolCode}}</p>
          </div>
-         <div class="lookup__result__item__expand">Chi tiết</div>
+         <a routerLink="/home/viewCourse" [queryParams]="{id:course._id}"><div class="lookup__result__item__expand">Chi tiết</div></a>
       </div>
     </div>
   </section>

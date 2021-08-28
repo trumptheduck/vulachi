@@ -2,8 +2,8 @@ export interface Course {
     _id?: string,
     name: string,
     code: string,
-    schoolCode?: string,
-    school?: string,
+    schoolCode: string,
+    school: string,
     data: [
       {
         year: number,
@@ -16,5 +16,5 @@ export interface Course {
         amount: number
       }
     ],
-    desc?: string
+    desc: string
 }

@@ -35,6 +35,7 @@ export class CoursesComponent implements OnInit {
       code: "",
       region: "NORTH",
       address: "",
+      desc: ""
   }
     this.route.queryParams
       .subscribe({next: (params) => {

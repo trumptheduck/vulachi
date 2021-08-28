@@ -102,7 +102,8 @@ class Drawer {
             code: "",
             region: "NORTH",
             address: "",
-            thumbnail: ""
+            thumbnail: "",
+            desc: ""
         }
         this.data = this.copyData(this.emptyData);
     }

@@ -20,6 +20,9 @@ import { PrinterComponent } from './utils/printer/printer.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { LookupComponent } from './lookup/lookup.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { UniversityComponent } from './university/university.component';
+import { ViewcourseComponent } from './viewcourse/viewcourse.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     DashboardComponent,
     UtilsComponent,
     PrinterComponent,
-    LookupComponent
+    LookupComponent,
+    UniversityComponent,
+    ViewcourseComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     FormsModule,
     MatSnackBarModule,
     CKEditorModule,
-    NgxSliderModule
+    NgxSliderModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

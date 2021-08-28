@@ -1,0 +1,45 @@
+<section class="main">
+  <section class="banner">
+    <img src="../../assets/images/haneen-krimly-_D1DKks6wgs-unsplash.jpg" class="banner__image">
+  </section>
+  <section class="university">
+    <div class="university__wrapper">
+      <div class="university__titlebar">
+        <img [src]="schoolData.thumbnail" class="university__logo">
+        <div>
+          <p class="university__name">{{schoolData.name}}</p>
+          <p class="university__code">Mã trường: {{schoolData.code}}</p>
+          <div *ngIf="schoolData.phones.length !== 0" class="university__contact"><p class="university__code">Số điện thoại:</p> <p class="university__code" *ngFor="let number of schoolData.phones"> {{number}}</p></div>
+          <div *ngIf="schoolData.emails.length !== 0" class="university__contact"><p class="university__code">Email:</p> <p class="university__code" *ngFor="let number of schoolData.emails"> {{number}}</p></div>
+          <div *ngIf="schoolData.hotlines.length !== 0" class="university__contact"><p class="university__code">Hotline:</p> <p class="university__code" *ngFor="let number of schoolData.hotlines"> {{number}}</p></div>
+          <div *ngIf="schoolData.faxes.length !== 0" class="university__contact"><p class="university__code">Fax:</p> <p class="university__code" *ngFor="let number of schoolData.faxes"> {{number}}</p></div>
+        </div>
+        <a [href]="schoolData.website"><div class="university__website"><p>Trang web chính thức</p></div></a>
+      </div>
+    </div>
+  </section>
+  <section class="lookup">
+    <div class="lookup__filter">
+      <label>Điểm chuẩn</label>
+      <div class="custom-slider lookup__filter__marks">
+        <ngx-slider (userChange)="onSearch()" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+      </div>
+      <input [(ngModel)]="searchQuery" (ngModelChange)="onSearch()" type="text" class="lookup__filter__search form-control" placeholder="Tìm kiếm...">
+    </div>
+    <div class="lookup__result">
+      <div *ngFor="let course of filteredCourseData" class="lookup__result__item lookup__result__item--course">
+         <div class="lookup__result__item__inner lookup__result__item__inner--course">
+          <p class="lookup__result__item__title lookup__result__item__title--course">{{course.name}}</p>
+          <p class="lookup__result__item__subtitle">Mã ngành: {{course.code}} | Mã trường: {{course.schoolCode}}</p>
+         </div>
+         <a routerLink="/home/viewCourse" [queryParams]="{id:course._id}"><div class="lookup__result__item__expand">Chi tiết</div></a>
+      </div>
+    </div>
+  </section>
+  <section class="desc">
+    <div class="desc__wrapper">
+      <p class="desc__title">Thông tin tuyển sinh</p>
+      <div class="desc__html" [innerHTML]="schoolData.desc"></div>
+    </div>
+  </section>
+</section>

@@ -1,0 +1,46 @@
+<section class="main">
+  <section class="banner">
+    <img src="../../assets/images/haneen-krimly-_D1DKks6wgs-unsplash.jpg" class="banner__image">
+  </section>
+  <section class="course">
+    <div class="course__wrapper">
+      <div class="course__titlebar">
+        <p class="course__name">{{courseData.name}}</p>
+        <p class="course__code">Mã ngành: {{courseData.code}} | Mã trường: {{courseData.schoolCode}}</p>
+      <div class="course__addwish"><p>Thêm nguyện vọng</p></div>
+
+      </div>
+
+    </div>
+  </section>
+  <section class="chart">
+    <div class="chart__wrapper">
+      <ngx-charts-line-chart
+      [view]="[1000, 450]"
+      [legend]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxis]="true"
+      [yAxis]="true"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [timeline]="true"
+      [results]="multi"
+      [autoScale]="true"
+      >
+      </ngx-charts-line-chart>
+    </div>
+  </section>
+  <section class="table">
+    <div class="table__wrapper">
+      <p class="table__title">Điểm chuẩn năm: {{dataReversed[0].year}}</p>
+      <p *ngFor="let data of dataReversed[0].requirements"><b>Khối: {{data.group}}</b>: {{data.grade}}</p>
+    </div>
+  </section>
+  <section class="desc">
+    <div class="desc__wrapper">
+      <p class="desc__title">Thông tin tuyển sinh</p>
+      <div class="desc__html" [innerHTML]="courseData.desc"></div>
+    </div>
+  </section>
+</section>
